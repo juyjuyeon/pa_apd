@@ -1,4 +1,4 @@
-from create import daftar_review
+from create_admin import daftar_review
 from read import read_review
 def total_review(daftar_review): 
     total = len(daftar_review)

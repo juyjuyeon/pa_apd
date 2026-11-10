@@ -1,6 +1,5 @@
-daftar_review = []
-from create import create_review
-from create import masukkan_data
+# from create_admin import admin_create_film
+from prettytable import PrettyTable
 
 def total_review(daftar_review): 
     total = len(daftar_review)
@@ -8,13 +7,19 @@ def total_review(daftar_review):
     return total
 
 def read_review(daftar_review): 
-    from prettytable import PrettyTable
-    if not daftar_review:
-        print("Belum ada review yang tersimpan.")
-    else:
+    if not daftar_review: 
+        print("belum ada review yang tersimpan")
+    else: 
         tabel = PrettyTable()
-        tabel.field_names = ["No", "Judul","genre", "Rating", "Ulasan"]
-        for i, review in enumerate(daftar_review):
-            tabel.add_row([i + 1, review["judul"], review["genre"], review["rating"], review["ulasan"]])
-        print(tabel) 
+        tabel.field_names = ["No", "Judul", "Genre", "Rating", "Ulasan"]
+
+        for i, review in enumerate(daftar_review): 
+            tabel.add_row([
+                i + 1, 
+                review["judul"], 
+                review["genre"], 
+                review["rating"], 
+                review["ulasan"]
+            ])
+        print(tabel)
     return daftar_review

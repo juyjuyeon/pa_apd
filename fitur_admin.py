@@ -1,6 +1,6 @@
 from login import data_user
-from create import daftar_review
-from create import create_review
+from create_admin import daftar_review
+from create_admin import admin_create_film
 from read import read_review
 from update import update_review
 from delete import delete_review
@@ -8,19 +8,10 @@ from keluar import keluar_program
 from prettytable import PrettyTable
 import inquirer
 
-daftar_review = []
+username_pengguna = data_user
 
-def crud(daftar_review): 
-    if not daftar_review:
-        print("Belum ada review yang tersimpan.")
-    else:
-        table = PrettyTable()
-        table.field_names = ["No", "judul", "genre", "rating", "ulasan"]
-        for i, review in enumerate(daftar_review):
-            table.add_row([i + 1, review["judul"], review["genre"], review["rating"], review["ulasan"]   ])
-        print(table)
 
-def opsi(): 
+def create(): 
     while True: 
         questions = [
             inquirer.List(
@@ -35,7 +26,7 @@ def opsi():
         menu = answers['fitur']
 
         if menu == "create": 
-            create_review(daftar_review)
+            admin_create_film(daftar_review)
         elif menu == "read": 
             read_review(daftar_review)
         elif menu == "update": 
@@ -50,17 +41,50 @@ def baca_akun(data_user):
         print("data akun masih kosong")
     else: 
         tabel = PrettyTable()
-        tabel.field_names = ["No", "username", "password", "role"]
+        tabel.field_names = ["No", "username", "password", "role", "status"]
         for i, data in enumerate (data_user): 
-            tabel.add_row([i + 1, data["username"], data["password"], data["role"]])
+            tabel.add_row([i + 1, data["username"], data["password"], data["role"], data["status"]])
         print(tabel)
         return data_user
 
-def liat_ulasan(daftar_review):
-    read_review(daftar_review)
+def liat_ulasan(daftar_review): 
+    if not liat_ulasan: 
+        print("tidak ada ulasan yang tersimpan")
+        return
+    table = PrettyTable()
+    table.field_names = ["No", "penulis", "judul", "genre", "rating", "ulasan"]
+
+    for i, A in enumerate(daftar_review, start=1): 
+        table.add_row([
+            i,
+            A.get("penulis", ), 
+            A.get("judul"), 
+            A.get("genre"), 
+            A.get("rating"), 
+            A.get("ulasan")
+        ])
+    print(table)
     return daftar_review
 
-# def update_status(): 
+def status_pengguna(data_user): 
+    baca_akun(data_user)
+    target = input("masukkan username yang ingin diubah statusnya")
 
-def update_ulasan(): 
-    opsi()
+    user_ditemukan = False
+
+    for user in data_user: 
+        if user['status'] == target: 
+            user_ditemukan = True
+
+            if user['status'] == 'aktif': 
+                user['status'] == 'blokir'
+                print(" status pengguna '{target}' berhasil di blokir")
+            else:
+                user['status'] = 'aktif'
+                print(" status pengguna '{target}' berhasl di aktifkan")
+    if not user_ditemukan: 
+        print(f"pengguna dengan username '{target}' tidak ditemukan")
+        
+    return data_user
+
+

@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
 import inquirer
-from create import daftar_review
-from create import masukkan_data
+from create_admin import daftar_review
+from create_admin import admin_create_film
 from read import read_review
 
 def total_review(daftar_review): 

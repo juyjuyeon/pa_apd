@@ -1,12 +1,11 @@
-from login import login, data_user
-from create import create_review
+from create_admin import daftar_review
+from create_user import user_create_review
 from read import read_review 
 from update import update_review
 from delete import delete_review
 from keluar import keluar_program
 from prettytable import PrettyTable
 import inquirer
-daftar_review = []
 
 def liat_ulasan(daftar_review): 
     if not daftar_review:
@@ -33,7 +32,7 @@ def opsi():
         menu = answers['fitur']
 
         if menu == "create": 
-            create_review(daftar_review)
+            user_create_review(daftar_review)
         elif menu == "read": 
             read_review(daftar_review)
         elif menu == "update": 

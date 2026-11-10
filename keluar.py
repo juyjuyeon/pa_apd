@@ -1,4 +1,4 @@
-from create import daftar_review
+from create_admin import daftar_review
 
 def keluar_program(daftar_review): 
     exit()
