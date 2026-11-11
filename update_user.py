@@ -1,31 +1,29 @@
 from prettytable import PrettyTable
 import inquirer
 from create_admin import daftar_review
-from create_admin import admin_create_film
-from read import read_review
 
 def total_review(daftar_review): 
     total = len(daftar_review)
     print("review yang anda miliki adalah ", total)
     return total
 
-def update_review(daftar_review): 
+def update_user(daftar_review): 
     if not daftar_review:
         print("daftar ulasan masih kososng")
-        return
+        return daftar_review
 
     while True: 
         pilih_judul = [
             inquirer.List(
-                'judul',
-                message= "judul yang ingin anda ubah",
+                'edit',
+                message= "ulasan yang ingin anda ubah",
                 choices= [review["judul"] for review in daftar_review]
             )
         ]
         answers = inquirer.prompt(pilih_judul)
         if not answers:
             return
-        judul_target = answers['judul']
+        judul_target = answers['edit']
         break
 
     data_target = None
@@ -38,19 +36,14 @@ def update_review(daftar_review):
         inquirer.List(
             'opsi',
             message=f"bagian mana dari '{judul_target} yang ingin diubah?",
-            choices=['genre', 'rating', 'ulasan', 'semua data', 'batal']
+            choices=['rating', 'ulasan', 'semua data', 'batal']
         )
     ]
 
     answers_pilih = inquirer.prompt(pilih)
     opsi_terpilih = answers_pilih['opsi']
 
-    if opsi_terpilih == 'genre':
-        input_baru = [inquirer.Text('nilai', message="Masukkan genre baru")]
-        hasil = inquirer.prompt(input_baru)
-        data_target['genre'] = hasil['nilai']
-
-    elif opsi_terpilih == 'rating':
+    if opsi_terpilih == 'rating':
         input_baru = [inquirer.Text('nilai', message="Masukkan rating baru")]
         hasil = inquirer.prompt(input_baru)
         data_target['rating'] = hasil['nilai']
@@ -62,15 +55,13 @@ def update_review(daftar_review):
 
     elif opsi_terpilih == 'Semua Data':
         form_semua = [
-            inquirer.Text('genre', message="Masukkan genre baru", default=data_target['genre']),
             inquirer.Text('rating', message="Masukkan rating baru", default=data_target['rating']),
             inquirer.Text('ulasan', message="Masukkan ulasan baru", default=data_target['ulasan'])
         ]
         hasil = inquirer.prompt(form_semua)
-        data_target['genre'] = hasil['genre']
         data_target['rating'] = hasil['rating']
         data_target['ulasan'] = hasil['ulasan']
-    elif opsi_terpilih == 'Batal':
+    elif opsi_terpilih == 'batal':
         print("Perubahan dibatalkan.")
         return
     print("berhasil memperbarui ulasan")

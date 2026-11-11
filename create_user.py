@@ -1,6 +1,5 @@
 from create_admin import daftar_review
 from create_admin import daftar_film
-# import inquirer
 
 def user_create_review(daftar_film, daftar_review):
     if len(daftar_film) == 0: 

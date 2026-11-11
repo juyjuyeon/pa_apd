@@ -1,9 +1,10 @@
 from create_admin import daftar_review
+from create_admin import daftar_film
+from login import login 
 from create_user import user_create_review
-from read import read_review 
-from update import update_review
-from delete import delete_review
-from keluar import keluar_program
+from read_user import read_user 
+from update_user import update_user
+from delete_user import delete_user
 from prettytable import PrettyTable
 import inquirer
 
@@ -23,7 +24,7 @@ def opsi():
             inquirer.List(
                 'fitur', 
                 message="pilih menu",
-                choices=['create', 'read', 'update', 'delete', 'keluar']
+                choices=['create', 'read', 'update', 'delete', 'kembali', 'keluar']
             )
         ]
         answers = inquirer.prompt(questions)
@@ -32,12 +33,14 @@ def opsi():
         menu = answers['fitur']
 
         if menu == "create": 
-            user_create_review(daftar_review)
+            user_create_review(daftar_film)
         elif menu == "read": 
-            read_review(daftar_review)
+            read_user(daftar_review)
         elif menu == "update": 
-            update_review(daftar_review)
+            update_user(daftar_review)
         elif menu == "delete":
-            delete_review(daftar_review)
-        elif menu == "keluar":
-            keluar_program(daftar_review)
+            delete_user(daftar_review)
+        elif menu == "kembali":
+            login()
+        elif menu == "keluar": 
+            exit()

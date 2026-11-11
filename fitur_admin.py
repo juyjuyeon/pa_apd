@@ -1,23 +1,22 @@
 from login import data_user
-from create_admin import daftar_review
+from login import login
+from create_admin import daftar_review, daftar_film
 from create_admin import admin_create_film
-from read import read_review
-from update import update_review
-from delete import delete_review
-from keluar import keluar_program
+from read_admin import read_admin
+from update_admin import update_admin
+from delete_admin import delete_admin
 from prettytable import PrettyTable
 import inquirer
 
 username_pengguna = data_user
 
-
-def create(): 
+def buat(): 
     while True: 
         questions = [
             inquirer.List(
                 'fitur', 
                 message="pilih menu",
-                choices=['create', 'read', 'update', 'delete', 'keluar']
+                choices=['create', 'read', 'update', 'delete', 'kembali']
             )
         ]
         answers = inquirer.prompt(questions)
@@ -28,13 +27,14 @@ def create():
         if menu == "create": 
             admin_create_film(daftar_review)
         elif menu == "read": 
-            read_review(daftar_review)
+            read_admin(daftar_film)
         elif menu == "update": 
-            update_review(daftar_review)
+            update_admin(daftar_review)
         elif menu == "delete":
-            delete_review(daftar_review)
-        elif menu == "keluar":
-            keluar_program(daftar_review)
+            delete_admin(daftar_review)
+        elif menu == "kembali":
+            login()
+
 
 def baca_akun(data_user): 
     if not data_user:
