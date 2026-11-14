@@ -1,7 +1,8 @@
 from create_admin import daftar_review
 from create_admin import daftar_film
+from simpan_fungsi import jeda
 
-def user_create_review(daftar_film, daftar_review):
+def user_create_review(user, daftar_film, daftar_review):
     if len(daftar_film) == 0: 
         print("belum ada film yang tersedia")
         return daftar_review
@@ -11,7 +12,10 @@ def user_create_review(daftar_film, daftar_review):
         print(f"{i + 1}. {film['judul']} (genre : { film['genre']})")
 
     try: 
-        pilihan = int(input("pilih nomor film yang ingin direview"))
+        pilihan = int(input("pilih nomor film yang ingin direview (0 untuk batal): "))
+        if pilihan == 0:
+            print("Pembuatan ulasan dibatalkan.")
+            jeda()
         if pilihan < 1 or pilihan > len(daftar_film): 
             print("nomor film tidak valid")
             return daftar_review
@@ -23,16 +27,35 @@ def user_create_review(daftar_film, daftar_review):
         return daftar_review
 
     print(f"menulis ulasan untuk {film_terpilih['judul']}")
-    rating = input("rating 1-10: ")
-    ulasan = input("ulasan: ")
 
-    review_baru = { 
-        "judul" : film_terpilih["judul"], 
-        "genre" : film_terpilih["genre"], 
-        "rating" : rating, 
-        "ulasan" : ulasan
-    }
+    while True: 
+        try: 
+            rating = int(input("rating 1-10: "))
+            if rating < 0 or rating > 10: 
+                raise ValueError
+            break
+        except ValueError: 
+            print("rating harus angka 1-10")
 
-    daftar_review.append(review_baru)
+    while True: 
+            try: 
+                ulasan = input("ulasan: ").strip()
+                if len(ulasan) == 0: 
+                    raise ValueError("ulasan tidak boleh kosong")
+                break
+            except ValueError as e: 
+                print(e)
+
+    daftar_review.append({
+        "username": user["username"],
+        "judul": film_terpilih["judul"],
+        "genre": film_terpilih["genre"],
+        "rating": rating,
+        "ulasan": ulasan,
+    })
+
+    
+    print(f"review untuk '{film_terpilih['judul']}' berhasil disimpan")
+    jeda()
     return daftar_review
 

@@ -5,6 +5,7 @@ from create_admin import admin_create_film
 from read_admin import read_admin
 from update_admin import update_admin
 from delete_admin import delete_admin
+from simpan_fungsi import jeda
 from prettytable import PrettyTable
 import inquirer
 
@@ -37,18 +38,19 @@ def buat():
 
 
 def baca_akun(data_user): 
-    if not data_user:
+    if len(data_user) == 0:
         print("data akun masih kosong")
     else: 
         tabel = PrettyTable()
-        tabel.field_names = ["No", "username", "password", "role", "status"]
-        for i, data in enumerate (data_user): 
-            tabel.add_row([i + 1, data["username"], data["password"], data["role"], data["status"]])
+        tabel.field_names = ["No", "username", "role", "status"]
+        for i, data in enumerate (data_user, start=1): 
+            tabel.add_row([i + 1, data["username"], data["role"], data["status"]])
         print(tabel)
-        return data_user
+    jeda()
+    return data_user
 
 def liat_ulasan(daftar_review): 
-    if not liat_ulasan: 
+    if len(liat_ulasan) == 0: 
         print("tidak ada ulasan yang tersimpan")
         return
     table = PrettyTable()
@@ -67,24 +69,38 @@ def liat_ulasan(daftar_review):
     return daftar_review
 
 def status_pengguna(data_user): 
-    baca_akun(data_user)
-    target = input("masukkan username yang ingin diubah statusnya")
+    if len(data_user) == 0:
+        print("Data akun masih kosong.")
+        jeda()
+        return data_user
 
+    tabel = PrettyTable()
+    tabel.field_names = ["No", "Username", "Role", "Status"]
+    for i, data in enumerate(data_user, start=1):
+        tabel.add_row([i + 1, data["username"], data["role"], data["status"]])
+    print(tabel)
+
+    target = input("Masukkan username yang ingin diubah statusnya: ").strip()
+    if not target: 
+        print("perubahan dibatalkan")
+        jeda()
+        return data_user
+    
     user_ditemukan = False
-
     for user in data_user: 
         if user['status'] == target: 
             user_ditemukan = True
-
-            if user['status'] == 'aktif': 
-                user['status'] == 'blokir'
+            if user["role"] == "admin":
+                print("Akun admin tidak dapat diblokir!")
+            elif user['status'] == 'aktif': 
+                user['status'] = 'blokir'
                 print(" status pengguna '{target}' berhasil di blokir")
             else:
                 user['status'] = 'aktif'
                 print(" status pengguna '{target}' berhasl di aktifkan")
     if not user_ditemukan: 
         print(f"pengguna dengan username '{target}' tidak ditemukan")
-        
+    jeda()
     return data_user
 
 
