@@ -1,10 +1,10 @@
-from create_admin import daftar_review
-from create_admin import daftar_film
+from storage import simpan_semua
 from simpan_fungsi import jeda
 
 def user_create_review(user, daftar_film, daftar_review):
     if len(daftar_film) == 0: 
         print("belum ada film yang tersedia")
+        jeda()
         return daftar_review
 
     print("daftar film tersedia")
@@ -16,22 +16,29 @@ def user_create_review(user, daftar_film, daftar_review):
         if pilihan == 0:
             print("Pembuatan ulasan dibatalkan.")
             jeda()
+            return daftar_review
         if pilihan < 1 or pilihan > len(daftar_film): 
             print("nomor film tidak valid")
+            jeda()
             return daftar_review
-
-        film_terpilih = daftar_film[ pilihan - 1]
 
     except ValueError: 
         print("masukkan input berupa angka")
         return daftar_review
-
+    
+    film_terpilih = daftar_film[ pilihan - 1]
+    for review in daftar_review:
+        if review["username"] == user["username"] and review["judul"] == film_terpilih["judul"]:
+            print("Kamu sudah pernah mereview film ini")
+            jeda()
+            return daftar_review
+        
     print(f"menulis ulasan untuk {film_terpilih['judul']}")
 
     while True: 
         try: 
             rating = int(input("rating 1-10: "))
-            if rating < 0 or rating > 10: 
+            if rating < 1 or rating > 10: 
                 raise ValueError
             break
         except ValueError: 
@@ -53,7 +60,7 @@ def user_create_review(user, daftar_film, daftar_review):
         "rating": rating,
         "ulasan": ulasan,
     })
-
+    simpan_semua()
     
     print(f"review untuk '{film_terpilih['judul']}' berhasil disimpan")
     jeda()

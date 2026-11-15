@@ -5,7 +5,7 @@ from create_user import user_create_review
 from read_user import read_user 
 from update_user import update_user
 from delete_user import delete_user
-# from simpan_fungsi import jeda
+from simpan_fungsi import jeda
 from prettytable import PrettyTable
 import inquirer
 
@@ -19,7 +19,7 @@ def liat_ulasan(daftar_review):
             table.add_row([i + 1, review["judul"], review["genre"], review["rating"], review["ulasan"]   ])
         print(table)
 
-def opsi(): 
+def opsi(user): 
     while True: 
         questions = [
             inquirer.List(

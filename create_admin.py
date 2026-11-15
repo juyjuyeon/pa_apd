@@ -1,6 +1,5 @@
-daftar_review = []
-daftar_film = []
 from simpan_fungsi import jeda
+from storage import simpan_semua
 
 def admin_create_film(daftar_film): 
     while True: 
@@ -18,7 +17,7 @@ def admin_create_film(daftar_film):
 
     while True: 
         try: 
-            genre =  input("genre : ")
+            genre =  input("genre : ").strip()
             if len(genre) == 0: 
                 raise ValueError("genre tidak boleh kosong")
             break
@@ -26,11 +25,15 @@ def admin_create_film(daftar_film):
             print(e)
     film_baru = {"judul" : judul, "genre" : genre}
     daftar_film.append(film_baru)
+    simpan_semua()
     print(f"film/series '{judul}' berhasil ditambahkan ke database")
     jeda()
     return daftar_film
 
-def total_review(daftar_review): 
-    total = len(daftar_review)
-    print("review yang anda miliki adalah ", total)
+def total_review(daftar_review, user): 
+    total = 0
+    for review in daftar_review:
+        if review["username"] == user["username"]:
+            total += 1
+    print("Review yang anda miliki adalah ", total)
     return total

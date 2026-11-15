@@ -1,4 +1,4 @@
-from create_admin import daftar_review
+from storage import simpan_semua
 from simpan_fungsi import jeda
 
 
@@ -10,14 +10,15 @@ def delete_film_admin(daftar_film):
     
     print("====== Daftar film ======")
     for i, film in enumerate(daftar_film, start=1): 
-        print(f"{i}. {film.get('judul')} - oleh {film.get('username', 'Anonim')} (Rating: {film.get('rating')}/10)")
+        print(f"{i}. {film.get('judul')} (genre: {film.get('genre')})")
 
     try: 
         hapus_film = int(input("masukkan nomor film yang ingin anda hapus (0 untuk batal): "))
         if hapus_film == 0:
             print("Penghapusan dibatalkan.")
-        elif 1 <= hapus_film <= len(daftar_review):
-            terhapus = daftar_review.pop(hapus_film - 1)
+        elif 1 <= hapus_film <= len(daftar_film):
+            terhapus = daftar_film.pop(hapus_film - 1)
+            simpan_semua()
             print(f"Film untuk '{terhapus['judul']}' berhasil dihapus!")
         else:
             print("Nomor tidak valid.")
@@ -41,9 +42,9 @@ def delete_admin(daftar_review):
         hapus_ulasan = int(input("masukkan nomor ulasan yang ingin anda hapus (0 untuk batal): "))
         if hapus_ulasan == 0:
             print("Penghapusan dibatalkan.")
-        elif hapus_ulasan <= 1 or hapus_ulasan <= len(daftar_review): 
-            # terhapus = daftar_review.pop(hapus_ulasan - 1)
-            terhapus = hapus_ulasan - 1
+        elif 1 <= hapus_ulasan <= len(daftar_review): 
+            terhapus = daftar_review.pop(hapus_ulasan - 1)
+            simpan_semua()
             print(f"Ulasan untuk '{terhapus['judul']}' berhasil dihapus!")
         else:
             print("Nomor tidak valid.")

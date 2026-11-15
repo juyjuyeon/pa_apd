@@ -1,4 +1,4 @@
-from create_admin import daftar_review
+from storage import simpan_semua
 from simpan_fungsi import jeda
 from read_user import read_user
 
@@ -24,9 +24,11 @@ def delete_user(user, daftar_review):
         print("masukkan angka!")
         jeda()
         return daftar_review
+
     
     indeks = ulasan_saya[nomor_hapus - 1]
-    del daftar_review[indeks]
+    daftar_review.remove(indeks)
+    simpan_semua()
     print("review berhasil dihapus!")
     jeda()
     return daftar_review

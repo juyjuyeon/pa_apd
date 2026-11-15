@@ -1,39 +1,7 @@
 limit_login = 3
 from simpan_fungsi import jeda
+from storage import simpan_semua, data_user
 import pwinput
-
-data_user = [
-    {
-        "username" : "admin_utama", 
-        "password" : "admin123", 
-        "role" : "admin",
-        "status" : "aktif"
-    },
-    {
-        "username" : "user1", 
-        "password" : "user123", 
-        "role" : "user",
-        "status" : "aktif"
-    }, 
-    {
-        "username" : "user2", 
-        "password" : "user234", 
-        "role" : "user",
-        "status" : "aktif"
-    }, 
-    {
-        "username" : "user3", 
-        "password" : "user345",
-        "role" : "user",
-        "status" : "aktif"
-    },
-    { 
-        "username" : "user4", 
-        "password" : "user456",
-        "role" : "user",
-        "status" : "aktif"
-    }
-]
 
 def batas_login(batas, percobaan):
     sisa_login = batas - (percobaan + 1)
@@ -52,7 +20,7 @@ def login():
             if user.get("username") == username_input and user.get("password") == password_input:
                 user_terhubung = user
                 break
-
+        
         if user_terhubung:
             if user_terhubung.get("status") != "aktif":
                 print("Akun Anda sedang dinonaktifkan. Hubungi admin.")
@@ -110,6 +78,7 @@ def register():
         "role": "user", 
         "status": "aktif"
         })
+    simpan_semua()
     print("Registrasi berhasil, silakan login!")
     jeda()
 

@@ -1,0 +1,32 @@
+[
+    {
+        "username": "admin_utama",
+        "password": "admin123",
+        "role": "admin",
+        "status": "aktif"
+    },
+    {
+        "username": "user1",
+        "password": "user123",
+        "role": "user",
+        "status": "aktif"
+    },
+    {
+        "username": "user2",
+        "password": "user234",
+        "role": "user",
+        "status": "aktif"
+    },
+    {
+        "username": "user3",
+        "password": "user345",
+        "role": "user",
+        "status": "aktif"
+    },
+    {
+        "username": "niyah",
+        "password": "123456",
+        "role": "user",
+        "status": "blokir"
+    }
+]
