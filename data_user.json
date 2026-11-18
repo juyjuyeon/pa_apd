@@ -28,5 +28,11 @@
         "password": "123456",
         "role": "user",
         "status": "blokir"
+    },
+    {
+        "username": "coba",
+        "password": "123456",
+        "role": "user",
+        "status": "aktif"
     }
 ]

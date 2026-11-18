@@ -5,5 +5,12 @@
         "genre": "Drama",
         "rating": 9,
         "ulasan": "sedih bgt!!!!"
+    },
+    {
+        "username": "coba",
+        "judul": "Laut Bercerita",
+        "genre": "Fiksi Sejarah",
+        "rating": 1,
+        "ulasan": "@!#$"
     }
 ]
