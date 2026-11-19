@@ -1,4 +1,4 @@
-from simpan_fungsi import jeda
+
 from storage import simpan_semua
 
 def admin_create_film(daftar_film): 
@@ -27,7 +27,6 @@ def admin_create_film(daftar_film):
     daftar_film.append(film_baru)
     simpan_semua()
     print(f"film/series '{judul}' berhasil ditambahkan ke database")
-    jeda()
     return daftar_film
 
 def total_review(daftar_review, user): 

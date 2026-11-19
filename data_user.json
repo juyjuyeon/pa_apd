@@ -34,5 +34,17 @@
         "password": "123456",
         "role": "user",
         "status": "aktif"
+    },
+    {
+        "username": "wili",
+        "password": "123456",
+        "role": "user",
+        "status": "blokir"
+    },
+    {
+        "username": "%%%%",
+        "password": "9999999",
+        "role": "user",
+        "status": "aktif"
     }
 ]

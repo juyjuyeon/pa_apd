@@ -24,11 +24,17 @@ def user_create_review(user, daftar_film, daftar_review):
 
     except ValueError: 
         print("masukkan input berupa angka")
+        jeda()
         return daftar_review
     
-    film_terpilih = daftar_film[ pilihan - 1]
+    film_terpilih = daftar_film[pilihan - 1]
+    username_aktif = user.get("username", " ")
+    judul_film = film_terpilih.get("judul", " ")
     for review in daftar_review:
-        if review["username"] == user["username"] and review["judul"] == film_terpilih["judul"]:
+        if (
+            review.get("username", "").lower() == username_aktif.lower()
+            and review.get("judul", "").lower() == judul_film.lower()
+        ):
             print("Kamu sudah pernah mereview film ini")
             jeda()
             return daftar_review

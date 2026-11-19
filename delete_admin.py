@@ -50,5 +50,5 @@ def delete_admin(daftar_review):
             print("Nomor tidak valid.")
     except ValueError:
         print("Input harus berupa angka!")
-    jeda()
+    
     return daftar_review

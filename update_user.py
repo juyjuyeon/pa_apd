@@ -5,7 +5,6 @@ from storage import simpan_semua
 def update_user(user, daftar_review): 
     ulasan_saya = read_user(user, daftar_review)
     if len(ulasan_saya) == 0:
-        print("daftar ulasan masih kososng")
         jeda()
         return daftar_review
 
@@ -15,7 +14,7 @@ def update_user(user, daftar_review):
             print("Perubahan dibatalkan.")
             jeda()
             return daftar_review
-        if nomor < 1 or nomor < len(ulasan_saya):
+        if nomor < 1 or nomor > len(ulasan_saya):
             print("Nomor tidak valid.")
             jeda()
             return daftar_review

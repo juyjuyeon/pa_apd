@@ -1,15 +1,8 @@
 [
     {
-        "username": "user1",
-        "judul": "20th Century Girl",
-        "genre": "Drama",
-        "rating": 9,
-        "ulasan": "sedih bgt!!!!"
-    },
-    {
         "username": "coba",
         "judul": "Laut Bercerita",
-        "genre": "Fiksi Sejarah",
+        "genre": "Fiksi",
         "rating": 1,
         "ulasan": "@!#$"
     }

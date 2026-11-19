@@ -1,13 +1,13 @@
-from create_admin import daftar_review
-from create_admin import daftar_film
-from login import login 
+# from create_admin import daftar_review
+# from create_admin import daftar_film
+from unit_main import menu_utama
 from create_user import user_create_review
 from read_user import read_user 
 from update_user import update_user
 from delete_user import delete_user
-from simpan_fungsi import jeda
 from prettytable import PrettyTable
 import inquirer
+from storage import daftar_film, daftar_review
 
 def liat_ulasan(daftar_review): 
     if not daftar_review:
@@ -42,6 +42,6 @@ def opsi(user):
         elif menu == "delete":
             delete_user(daftar_review)
         elif menu == "kembali":
-            login()
+            menu_utama()
         elif menu == "keluar": 
             exit()

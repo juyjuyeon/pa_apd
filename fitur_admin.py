@@ -1,49 +1,8 @@
-from storage import simpan_semua, data_user
+from storage import data_user
 from simpan_fungsi import jeda
-import inquirer
 from prettytable import PrettyTable
 
 username_pengguna = data_user
-
-# def buat(): 
-#     while True: 
-#         questions = [
-#             inquirer.List(
-#                 'fitur', 
-#                 message="pilih menu",
-#                 choices=['create', 'read', 'update', 'delete', 'kembali']
-#             )
-#         ]
-#         answers = inquirer.prompt(questions)
-#         if not answers:
-#             break 
-#         menu = answers['fitur']
-
-#         if menu == "create": 
-#             admin_create_film(daftar_film)
-#         elif menu == "read": 
-#             while True: 
-#                 questions = [
-#                     inquirer.List(
-#                         'read', 
-#                         message="Pilih menu",
-#                         choices=['review', 'film', 'kembali']
-#                     )
-#                 ]
-#                 answers = inquirer.prompt(questions)
-#                 if not answers:
-#                     break 
-#                 menu = answers['fitur']
-#                 if questions == "review": 
-#                     read_admin(daftar_review)
-#                 elif questions == "film": 
-#                     read_film_admin(daftar_film)
-#         elif menu == "update": 
-#             update_admin(daftar_review)
-#         elif menu == "delete":
-#             delete_admin(daftar_review)
-#         elif menu == "kembali":
-#             break
 
 
 def baca_akun(data_user): 

@@ -30,5 +30,5 @@ def delete_user(user, daftar_review):
     daftar_review.remove(indeks)
     simpan_semua()
     print("review berhasil dihapus!")
-    jeda()
+    
     return daftar_review

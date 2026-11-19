@@ -9,7 +9,7 @@ from update_user import update_user
 from delete_admin import delete_admin, delete_film_admin
 from delete_user import delete_user
 from fitur_admin import baca_akun, status_pengguna
-from simpan_fungsi import clear_screen, jeda
+from simpan_fungsi import clear_screen
 import inquirer
 
 
