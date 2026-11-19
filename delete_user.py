@@ -8,27 +8,28 @@ def delete_user(user, daftar_review):
     if len(ulasan_saya) == 0: 
         jeda()
         return daftar_review
-    try: 
-        nomor_hapus = int(input("masukkan nomor yang ingin dihapus: "))
-        if nomor_hapus == 0: 
-            print("penghapusan dibatalkan")
+    while True: 
+        try: 
+            nomor_hapus = int(input("masukkan nomor yang ingin dihapus: "))
+            if nomor_hapus == 0: 
+                print("penghapusan dibatalkan")
+                jeda()
+                return daftar_review
+            
+            if nomor_hapus < 1 or nomor_hapus > len(ulasan_saya): 
+                print("nomor tidak valid")
+                jeda()
+                return daftar_review
+            
+        except ValueError: 
+            print("masukkan angka!")
             jeda()
             return daftar_review
-        
-        if nomor_hapus < 1 or nomor_hapus > len(ulasan_saya): 
-            print("nomor tidak valid")
-            jeda()
-            return daftar_review
-        
-    except ValueError: 
-        print("masukkan angka!")
-        jeda()
-        return daftar_review
 
     
-    indeks = ulasan_saya[nomor_hapus - 1]
-    daftar_review.remove(indeks)
-    simpan_semua()
-    print("review berhasil dihapus!")
-    
-    return daftar_review
+        indeks = ulasan_saya[nomor_hapus - 1]
+        daftar_review.remove(indeks)
+        simpan_semua()
+        print("review berhasil dihapus!")
+        jeda()
+        return daftar_review

@@ -17,24 +17,6 @@ def baca_akun(data_user):
     jeda()
     return data_user
 
-def liat_ulasan(daftar_review): 
-    if len(daftar_review) == 0: 
-        print("tidak ada ulasan yang tersimpan")
-        return
-    table = PrettyTable()
-    table.field_names = ["No", "penulis", "judul", "genre", "rating", "ulasan"]
-
-    for i, A in enumerate(daftar_review, start=1): 
-        table.add_row([
-            i,
-            A.get("username", "-"),  
-            A.get("judul", "-"), 
-            A.get("genre", "-"), 
-            A.get("rating", "-"), 
-            A.get("ulasan", "-")
-        ])
-    print(table)
-    return daftar_review
 
 def status_pengguna(data_user): 
     if len(data_user) == 0:

@@ -1,9 +1,9 @@
 [
     {
-        "username": "coba",
-        "judul": "Laut Bercerita",
-        "genre": "Fiksi",
-        "rating": 1,
-        "ulasan": "@!#$"
+        "username": "user1",
+        "judul": "laut bercerita",
+        "genre": "fiksi bersejarah",
+        "rating": 9,
+        "ulasan": "bagus"
     }
 ]

@@ -1,3 +1,4 @@
+import re
 import os
 
 def clear_screen():
@@ -8,3 +9,10 @@ def clear_screen():
 
 def jeda(pesan = "Tekan Enter untuk melanjutkan..."):
     input(pesan)
+
+def validasi_input(pesan, pola):
+    while True:
+        teks = input(pesan).strip()
+        if teks and re.fullmatch(pola, teks):
+            return teks
+        print("Input tidak valid!")

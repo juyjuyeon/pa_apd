@@ -46,5 +46,23 @@
         "password": "9999999",
         "role": "user",
         "status": "aktif"
+    },
+    {
+        "username": "jeno",
+        "password": "101010",
+        "role": "user",
+        "status": "blokir"
+    },
+    {
+        "username": "jeno@",
+        "password": "222222",
+        "role": "user",
+        "status": "aktif"
+    },
+    {
+        "username": "@@@@@@@@",
+        "password": "333333",
+        "role": "user",
+        "status": "aktif"
     }
 ]

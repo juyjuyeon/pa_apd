@@ -9,9 +9,8 @@ from update_user import update_user
 from delete_admin import delete_admin, delete_film_admin
 from delete_user import delete_user
 from fitur_admin import baca_akun, status_pengguna
-from simpan_fungsi import clear_screen
+from simpan_fungsi import clear_screen, jeda
 import inquirer
-
 
 def total_ulasan(user, daftar_review): 
     review_user = [r for r in daftar_review if r.get("username") == user.get("username")]
@@ -110,6 +109,7 @@ def menu_user(user):
             user_create_review(user, daftar_film, daftar_review)
         elif menu == "Read":
             read_user(user, daftar_review)
+            jeda()
         elif menu == "Update":
             update_user(user, daftar_review)
         elif menu == "Delete":
